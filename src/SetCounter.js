@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { set } from './action';
 
 export const SetCounter = () => {
-  const count = useSelector((state) => state);
-  const emptyState = useSelector((state) => state.anotherValue);
+  // const count = useSelector((state) => state.value);
+  const { count } = useSelector((state) => {
+    return { count: state.value };
+  });
+  // console.log(count);
   const dispatch = useDispatch();
 
   const renderCounter = useRef({ count: 0 });
-  console.log(renderCounter.current.count++);
+  console.log('ref', renderCounter.current.count++);
   console.log('render');
 
   // useEffect(() => {
@@ -21,14 +24,14 @@ export const SetCounter = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          dispatch(set(count.value));
+          dispatch(set(count));
         }}
       >
         <label htmlFor="set-to">Set Count</label>
         <input
           id="set-to"
           type="number"
-          value={count.value}
+          value={count}
           onChange={(e) => {
             // setCount(e.target.value);
             dispatch(set(e.target.value));

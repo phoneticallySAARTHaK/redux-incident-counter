@@ -3,7 +3,8 @@ import { reducer } from './reducer';
 
 const initialState = {
   value: 0,
-  anotherValue: 'something'
+  anotherValue: 'something',
+  extra: 1
 };
 
 export const store = createStore(

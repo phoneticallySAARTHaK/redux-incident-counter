@@ -10,6 +10,10 @@ export const reducer = (state, action) => {
   if (action.type === SET) {
     return { ...state, value: parseInt(action.payload, 10) };
   }
-  console.log(action.payload);
-  return { ...state, anotherValue: action.payload };
+  if (action.type === 1) {
+    console.log('action', action, 'state', state);
+    return { ...state, anotherValue: action.payload };
+  }
+
+  return state;
 };
